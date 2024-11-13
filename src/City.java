@@ -86,15 +86,15 @@ class XmlFile {
 }
 
 class CityStatistics {
-    private final Map<String, Long> duplicates = new HashMap<>();
+    private final Map<String, Integer> duplicates = new HashMap<>();
     private final Map<String, Map<Integer, Integer>> floorCountByCity = new HashMap<>();
     public void addBuildingData(String city, String street, String house, int floor) {
         String buildingKey = city + ", " + street + ", " + house;
-        duplicates.put(buildingKey, duplicates.getOrDefault(buildingKey, 0L) + 1);
+        duplicates.put(buildingKey, duplicates.getOrDefault(buildingKey, 0) + 1);
         floorCountByCity.computeIfAbsent(city, k -> new HashMap<>())
                 .merge(floor, 1, Integer::sum);
     }
-    public Map<String, Long> getDuplicates() {
+    public Map<String, Integer> getDuplicates() {
         return duplicates;
     }
     public Map<String, Map<Integer, Integer>> getFloorCountByCity() {
