@@ -9,7 +9,7 @@ public class City {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите путь к файлу или exit для выхода:");
         while (true) {
-            String input = scanner.nextLine().trim().toLowerCase();
+            String input = scanner.nextLine().trim().toLowerCase().replace("\"", "");
             if (input.equalsIgnoreCase("exit")) {
                 System.out.println("Завершение работы.");
                 break;
